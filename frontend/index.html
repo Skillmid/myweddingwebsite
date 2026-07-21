@@ -1,0 +1,296 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The OluSola's | Wedding Invitation</title>
+    <style>
+        :root {
+            --navy: #1a237e;
+            --gold: #d4af37;
+            --light-gold: #f4e8c1;
+            --white: #ffffff;
+            --text-dark: #333333;
+            --bg-light: #fcfbf9;
+        }
+        body {
+            font-family: 'Georgia', serif;
+            margin: 0;
+            padding: 0;
+            background-color: var(--bg-light);
+            color: var(--text-dark);
+            text-align: center;
+            overflow-x: hidden;
+        }
+        .hidden {
+            opacity: 0;
+            transform: translateY(40px);
+            transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+        }
+        .show {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        header {
+            background-color: var(--navy);
+            color: var(--gold);
+            padding: 5rem 2rem;
+            border-bottom: 5px solid var(--gold);
+        }
+        h1 {
+            font-size: 3.5rem;
+            margin: 0 0 0.5rem 0;
+            font-style: italic;
+        }
+        h2 {
+            font-size: 1.8rem;
+            font-weight: normal;
+            margin-bottom: 0.5rem;
+            color: var(--navy);
+        }
+        header h2 {
+            color: var(--white);
+            font-size: 1.5rem;
+        }
+        .scripture {
+            font-style: italic;
+            font-size: 1.1rem;
+            max-width: 600px;
+            margin: 1.5rem auto 0;
+            color: var(--light-gold);
+            line-height: 1.5;
+        }
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+        .section {
+            margin: 4rem 0;
+            padding: 3rem 2rem;
+            background: var(--white);
+            border-radius: 12px;
+            box-shadow: 0 10px 20px rgba(0,0,0,0.05);
+            border-top: 3px solid var(--gold);
+        }
+        .invite-images img {
+            width: 100%;
+            max-width: 700px;
+            height: auto;
+            margin-bottom: 1.5rem;
+            border-radius: 8px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            transition: transform 0.3s ease;
+        }
+        .invite-images img:hover {
+            transform: scale(1.02);
+        }
+        .event-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+            text-align: left;
+        }
+        .event-card {
+            background: var(--bg-light);
+            padding: 2rem;
+            border-radius: 8px;
+            border-left: 4px solid var(--navy);
+        }
+        .event-card h3 {
+            color: var(--gold);
+            margin-top: 0;
+            border-bottom: 1px solid #ddd;
+            padding-bottom: 0.5rem;
+        }
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 15px;
+            margin-top: 2rem;
+        }
+        .gallery-grid img {
+            width: 100%;
+            height: 300px;
+            object-fit: cover;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+            transition: transform 0.3s;
+        }
+        .gallery-grid img:hover {
+            transform: scale(1.05);
+        }
+        form {
+            display: flex;
+            flex-direction: column;
+            gap: 1.5rem;
+            text-align: left;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+        label {
+            font-weight: bold;
+            color: var(--navy);
+        }
+        input, select {
+            width: 100%;
+            padding: 1rem;
+            margin-top: 0.5rem;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            font-family: inherit;
+            box-sizing: border-box;
+            font-size: 1rem;
+        }
+        input:focus, select:focus {
+            outline: none;
+            border-color: var(--gold);
+            box-shadow: 0 0 5px rgba(212, 175, 55, 0.5);
+        }
+        button {
+            background-color: var(--navy);
+            color: var(--gold);
+            border: 2px solid var(--gold);
+            padding: 1rem;
+            font-size: 1.2rem;
+            border-radius: 4px;
+            cursor: pointer;
+            transition: all 0.3s;
+            font-weight: bold;
+        }
+        button:hover {
+            background-color: var(--gold);
+            color: var(--navy);
+        }
+        #message {
+            margin-top: 1rem;
+            font-weight: bold;
+            text-align: center;
+        }
+        .success { color: green; }
+        .error { color: red; }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>The Olu Sola's</h1>
+        <h2>Abisola & Olumide</h2>
+        <div class="scripture">
+            "A little one shall become a thousand, and a small one a strong nation: I the LORD will hasten it in his time."<br>
+            - Isaiah 60:22 KJV
+        </div>
+    </header>
+    <div class="container">
+        <div class="section hidden">
+            <h2>Our Digital Invitation</h2>
+            <div class="invite-images">
+                <img src="invite-1.jpg" alt="Wedding Invitation Page 1">
+                <img src="invite-2.jpg" alt="Wedding Invitation Page 2">
+            </div>
+        </div>
+        <div class="section hidden">
+            <h2>Pre-Wedding Gallery</h2>
+            <p>Moments leading up to our big day.</p>
+            <div class="gallery-grid">
+                <img src="photo1.jpg" alt="Pre-wedding photo 1">
+                <img src="photo2.jpg" alt="Pre-wedding photo 2">
+                <img src="photo3.jpg" alt="Pre-wedding photo 3">
+                <img src="photo4.jpg" alt="Pre-wedding photo 4">
+            </div>
+        </div>
+        <div class="section hidden">
+            <h2>Event Details</h2>
+            <div class="event-grid">
+                <div class="event-card">
+                    <h3>Engagement Ceremony</h3>
+                    <p><strong>Date:</strong> Friday, 23rd October 2026</p>
+                    <p><strong>Time:</strong> 3:00 PM</p>
+                    <p><strong>Venue:</strong> Redeemers School of Mission (RECSOM), Ededimeji, Ede, Osun State</p>
+                    <p><strong>Color Code:</strong> White</p>
+                </div>
+                <div class="event-card">
+                    <h3>Wedding & Reception</h3>
+                    <p><strong>Date:</strong> Saturday, 24th October 2026</p>
+                    <p><strong>Time:</strong> 9:00 AM</p>
+                    <p><strong>Church Venue:</strong> Redeemers School of Mission (RECSOM), Ededimeji, Ede, Osun State</p>
+                    <p><strong>Reception Venue:</strong> Ede Mega High School, Cottage junction, Ede, Osun State</p>
+                </div>
+            </div>
+        </div>
+        <div class="section hidden" id="rsvp">
+            <h2>RSVP</h2>
+            <p>Please let us know if you can make it so we can prepare adequately to host you.</p>
+            <form id="rsvpForm">
+                <div>
+                    <label for="fullName">Full Name</label>
+                    <input type="text" id="fullName" name="fullName" required placeholder="Enter your full name">
+                </div>
+                <div>
+                    <label for="email">Email Address</label>
+                    <input type="email" id="email" name="email" required placeholder="Enter your email">
+                </div>
+                <div>
+                    <label for="dayOne">Engagement (Oct 23)</label>
+                    <select id="dayOne" name="dayOne" required>
+                        <option value="">Select an option</option>
+                        <option value="attending">Joyfully Attending</option>
+                        <option value="declined">Regretfully Declining</option>
+                    </select>
+                </div>
+                <div>
+                    <label for="dayTwo">Wedding Ceremony (Oct 24)</label>
+                    <select id="dayTwo" name="dayTwo" required>
+                        <option value="">Select an option</option>
+                        <option value="attending">Joyfully Attending</option>
+                        <option value="declined">Regretfully Declining</option>
+                    </select>
+                </div>
+                <button type="submit">Submit RSVP</button>
+                <div id="message"></div>
+            </form>
+        </div>
+    </div>
+    <script>
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach((entry) => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('show');
+                }
+            });
+        }, { threshold: 0.1 });
+        document.querySelectorAll('.hidden').forEach((el) => observer.observe(el));
+
+        document.getElementById('rsvpForm').addEventListener('submit', async (e) => {
+            e.preventDefault();
+            const messageDiv = document.getElementById('message');
+            messageDiv.textContent = 'Submitting...';
+            messageDiv.className = '';
+            const formData = {
+                fullName: document.getElementById('fullName').value,
+                email: document.getElementById('email').value,
+                dayOne: document.getElementById('dayOne').value,
+                dayTwo: document.getElementById('dayTwo').value,
+                timestamp: new Date().toISOString()
+            };
+            try {
+                const response = await fetch('http://localhost:3000/api/rsvp', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify(formData)
+                });
+                if (response.ok) {
+                    messageDiv.textContent = 'Thank you! Your RSVP has been received.';
+                    messageDiv.className = 'success';
+                    document.getElementById('rsvpForm').reset();
+                } else {
+                    throw new Error('Server error');
+                }
+            } catch (error) {
+                messageDiv.textContent = 'Failed to submit RSVP. Please try again later.';
+                messageDiv.className = 'error';
+            }
+        });
+    </script>
+</body>
+</html>
