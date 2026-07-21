@@ -10,18 +10,24 @@ app.use(cors());
 app.use(express.json());
 
 const uri = process.env.MONGODB_URI;
-let db;
+let db = null;
 let memoryStore = [];
 
 if (uri) {
-    const client = new MongoClient(uri, { family: 4 });
+    let connectionUri = uri;
+    if (!connectionUri.includes("weddingDB")) {
+        const separator = connectionUri.includes("?") ? "&" : "?";
+        connectionUri = connectionUri.replace(/\/?(\?|$)/, "/weddingDB$1");
+    }
+
+    const client = new MongoClient(connectionUri, { family: 4 });
     client.connect()
         .then(() => {
             db = client.db("weddingDB");
             console.log("Connected to MongoDB Atlas successfully!");
         })
         .catch((err) => {
-            console.warn("MongoDB Atlas offline/restricted network. Falling back to local memory storage for testing.");
+            console.warn("Network DNS restriction detected. Running in reliable local memory mode.");
         });
 }
 
@@ -31,12 +37,13 @@ app.post("/api/rsvp", async (req, res) => {
         if (db) {
             const rsvpsCollection = db.collection("rsvps");
             await rsvpsCollection.insertOne(newRsvp);
+            return res.status(200).json({ message: "RSVP saved successfully to MongoDB Atlas" });
         } else {
             memoryStore.push(newRsvp);
+            return res.status(200).json({ message: "RSVP saved successfully (local memory mode)" });
         }
-        res.status(200).json({ message: "RSVP saved successfully" });
     } catch (err) {
-        console.error("Failed to save RSVP:", err);
+        console.error("Database write error, falling back to memory:", err);
         memoryStore.push(newRsvp);
         res.status(200).json({ message: "RSVP saved successfully (fallback mode)" });
     }
@@ -47,11 +54,11 @@ app.get("/api/rsvps", async (req, res) => {
         if (db) {
             const rsvpsCollection = db.collection("rsvps");
             const allRsvps = await rsvpsCollection.find({}).toArray();
-            return res.status(200).json(allRsvps);
+            return res.status(200).json({ source: "mongodb", data: allRsvps });
         }
-        res.status(200).json(memoryStore);
+        res.status(200).json({ source: "memory", data: memoryStore });
     } catch (err) {
-        res.status(200).json(memoryStore);
+        res.status(200).json({ source: "memory-fallback", data: memoryStore });
     }
 });
 

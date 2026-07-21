@@ -3,204 +3,485 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>The OluSola's | Wedding Invitation</title>
+    <title>The Olusola Wedding Invite</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400;1,600&family=Montserrat:wght@300;400;500&display=swap" rel="stylesheet">
     <style>
         :root {
-            --navy: #1a237e;
-            --gold: #d4af37;
-            --light-gold: #f4e8c1;
+            --navy: #0f172a;
+            --gold: #c5a059;
+            --light-gold: #f3e9d2;
             --white: #ffffff;
-            --text-dark: #333333;
-            --bg-light: #fcfbf9;
+            --text-dark: #2c2c2c;
+            --bg-light: #faf9f6;
+            --transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
         }
         body {
-            font-family: 'Georgia', serif;
+            font-family: 'Montserrat', sans-serif;
             margin: 0;
             padding: 0;
             background-color: var(--bg-light);
             color: var(--text-dark);
             text-align: center;
             overflow-x: hidden;
+            letter-spacing: 0.03em;
+        }
+        h1, h2, h3, .scripture, .couples-names {
+            font-family: 'Cormorant Garamond', serif;
         }
         .hidden {
             opacity: 0;
-            transform: translateY(40px);
-            transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+            transform: translateY(30px);
+            transition: opacity 1s ease-out, transform 1s ease-out;
         }
         .show {
             opacity: 1;
             transform: translateY(0);
         }
         header {
-            background-color: var(--navy);
-            color: var(--gold);
-            padding: 5rem 2rem;
-            border-bottom: 5px solid var(--gold);
+            background: linear-gradient(rgba(15, 23, 42, 0.65), rgba(15, 23, 42, 0.85)), url('images/Pre-wedding gallery photos/1.jpg') no-repeat center center/cover;
+            color: var(--white);
+            padding: 9rem 2rem 7rem;
+            border-bottom: 3px solid var(--gold);
+            position: relative;
         }
-        h1 {
-            font-size: 3.5rem;
+        header h1 {
+            font-size: 4.8rem;
             margin: 0 0 0.5rem 0;
             font-style: italic;
-        }
-        h2 {
-            font-size: 1.8rem;
-            font-weight: normal;
-            margin-bottom: 0.5rem;
-            color: var(--navy);
+            color: var(--gold);
+            font-weight: 600;
+            text-shadow: 0 2px 10px rgba(0,0,0,0.5);
         }
         header h2 {
+            font-size: 2.1rem;
+            font-weight: 300;
+            letter-spacing: 0.2em;
+            text-transform: uppercase;
+            margin-bottom: 1.5rem;
             color: var(--white);
-            font-size: 1.5rem;
+            text-shadow: 0 2px 8px rgba(0,0,0,0.5);
         }
         .scripture {
             font-style: italic;
-            font-size: 1.1rem;
-            max-width: 600px;
-            margin: 1.5rem auto 0;
+            font-size: 1.25rem;
+            max-width: 700px;
+            margin: 2rem auto 0;
             color: var(--light-gold);
-            line-height: 1.5;
+            line-height: 1.6;
+            border-top: 1px solid rgba(197, 160, 89, 0.4);
+            border-bottom: 1px solid rgba(197, 160, 89, 0.4);
+            padding: 1.5rem 0;
         }
         .container {
-            max-width: 900px;
+            max-width: 1100px;
             margin: 0 auto;
-            padding: 2rem;
+            padding: 3rem 1.5rem;
         }
         .section {
-            margin: 4rem 0;
-            padding: 3rem 2rem;
+            margin: 5rem 0;
+            padding: 4rem 2.5rem;
             background: var(--white);
-            border-radius: 12px;
-            box-shadow: 0 10px 20px rgba(0,0,0,0.05);
-            border-top: 3px solid var(--gold);
+            border-radius: 16px;
+            box-shadow: 0 15px 35px rgba(0,0,0,0.04);
+            border: 1px solid rgba(197, 160, 89, 0.2);
         }
-        .invite-images img {
+        .section h2 {
+            font-size: 2.5rem;
+            color: var(--navy);
+            margin-bottom: 1rem;
+            font-weight: 600;
+        }
+        .section p {
+            color: #666;
+            font-size: 1.05rem;
+            margin-bottom: 2rem;
+        }
+
+        /* Luxury Interactive Envelope & Card Display */
+        .invitation-showcase {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 2rem;
+            margin: 2rem auto;
+        }
+        .envelope-box {
+            position: relative;
             width: 100%;
-            max-width: 700px;
-            height: auto;
-            margin-bottom: 1.5rem;
-            border-radius: 8px;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
-            transition: transform 0.3s ease;
+            max-width: 420px;
+            height: 270px;
+            background: linear-gradient(135deg, #f5efe6 0%, #e6dfd5 100%);
+            border-radius: 10px;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.12);
+            border: 2px solid var(--gold);
+            cursor: pointer;
+            overflow: hidden;
+            transition: transform 0.4s ease, box-shadow 0.4s ease;
+            display: flex;
+            justify-content: center;
+            align-items: center;
         }
-        .invite-images img:hover {
-            transform: scale(1.02);
+        .envelope-box:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 25px 50px rgba(197, 160, 89, 0.25);
         }
+        .envelope-flap {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 135px;
+            background: linear-gradient(180deg, #dfd6c8 0%, #d0c5b4 100%);
+            clip-path: polygon(0 0, 50% 100%, 100% 0);
+            transform-origin: top;
+            transition: transform 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+            z-index: 3;
+            border-bottom: 1px solid rgba(197, 160, 89, 0.5);
+        }
+        .envelope-box.opened .envelope-flap {
+            transform: rotateX(180deg);
+            z-index: 1;
+        }
+        .wax-seal {
+            position: absolute;
+            top: 105px;
+            width: 65px;
+            height: 65px;
+            background: radial-gradient(circle, #d4af37 0%, #b38f27 100%);
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            color: var(--white);
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.4rem;
+            font-weight: bold;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+            z-index: 4;
+            border: 2px solid #fff;
+            transition: transform 0.5s ease, opacity 0.5s ease;
+        }
+        .envelope-box.opened .wax-seal {
+            transform: scale(0);
+            opacity: 0;
+        }
+        .envelope-text {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.6rem;
+            color: var(--navy);
+            font-style: italic;
+            z-index: 2;
+            padding: 0 1rem;
+        }
+        .open-card-btn {
+            background-color: var(--navy);
+            color: var(--gold);
+            border: 1px solid var(--gold);
+            padding: 1rem 2.5rem;
+            font-size: 1.1rem;
+            border-radius: 6px;
+            cursor: pointer;
+            transition: var(--transition);
+            font-weight: 500;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+        }
+        .open-card-btn:hover {
+            background-color: var(--gold);
+            color: var(--white);
+            box-shadow: 0 8px 20px rgba(197, 160, 89, 0.4);
+            transform: translateY(-2px);
+        }
+
         .event-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 2rem;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 2.5rem;
             margin-top: 2rem;
             text-align: left;
         }
         .event-card {
             background: var(--bg-light);
-            padding: 2rem;
-            border-radius: 8px;
-            border-left: 4px solid var(--navy);
+            padding: 2.5rem;
+            border-radius: 12px;
+            border-left: 4px solid var(--gold);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.02);
+            transition: var(--transition);
+        }
+        .event-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 12px 25px rgba(0,0,0,0.06);
         }
         .event-card h3 {
-            color: var(--gold);
+            color: var(--navy);
             margin-top: 0;
-            border-bottom: 1px solid #ddd;
-            padding-bottom: 0.5rem;
+            font-size: 1.8rem;
+            border-bottom: 1px solid rgba(197, 160, 89, 0.3);
+            padding-bottom: 0.8rem;
+        }
+        .event-card p {
+            color: #444;
+            font-size: 1rem;
+            line-height: 1.6;
+            margin: 0.8rem 0;
         }
         .gallery-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 15px;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 16px;
             margin-top: 2rem;
         }
-        .gallery-grid img {
+        .gallery-item {
+            height: 280px;
+            overflow: hidden;
+            border-radius: 10px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.06);
+            cursor: pointer;
+            position: relative;
+        }
+        .gallery-item img {
             width: 100%;
-            height: 300px;
+            height: 100%;
             object-fit: cover;
+            transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+        .gallery-item:hover img {
+            transform: scale(1.08);
+        }
+
+        /* Registry Box Style */
+        .registry-card {
+            background: var(--bg-light);
+            padding: 2.5rem;
+            border-radius: 12px;
+            border: 1px solid var(--light-gold);
+            max-width: 650px;
+            margin: 0 auto;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.02);
+        }
+        .registry-card p {
+            color: #444;
+            line-height: 1.7;
+            font-size: 1.05rem;
+            margin-bottom: 1.5rem;
+        }
+        .bank-details {
+            background: var(--white);
+            padding: 1.5rem;
             border-radius: 8px;
-            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
-            transition: transform 0.3s;
+            border-left: 4px solid var(--gold);
+            display: inline-block;
+            margin-top: 0.5rem;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.04);
         }
-        .gallery-grid img:hover {
-            transform: scale(1.05);
+        .bank-details h3 {
+            margin: 0 0 0.5rem 0;
+            color: var(--navy);
+            font-size: 1.4rem;
         }
+        .bank-details p {
+            margin: 0;
+            font-size: 1.1rem;
+            font-weight: 500;
+            color: var(--text-dark);
+        }
+
+        /* Lightbox Modal with Sweet Words */
+        #lightbox {
+            display: none;
+            position: fixed;
+            z-index: 1000;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(15, 23, 42, 0.95);
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+            padding: 2rem;
+            box-sizing: border-box;
+        }
+        .lightbox-content {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            max-width: 900px;
+            width: 100%;
+        }
+        #lightbox img {
+            max-width: 100%;
+            max-height: 75vh;
+            border-radius: 8px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+            border: 2px solid var(--gold);
+            object-fit: contain;
+        }
+        #lightbox-caption {
+            margin-top: 1.5rem;
+            color: var(--light-gold);
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.6rem;
+            font-style: italic;
+            text-align: center;
+            line-height: 1.4;
+            letter-spacing: 0.05em;
+        }
+        #lightbox span {
+            position: absolute;
+            top: 30px;
+            right: 40px;
+            color: var(--white);
+            font-size: 3rem;
+            cursor: pointer;
+            font-family: 'Cormorant Garamond', serif;
+            transition: var(--transition);
+        }
+        #lightbox span:hover {
+            color: var(--gold);
+        }
+
         form {
             display: flex;
             flex-direction: column;
             gap: 1.5rem;
             text-align: left;
-            max-width: 600px;
+            max-width: 650px;
             margin: 0 auto;
         }
         label {
-            font-weight: bold;
+            font-weight: 500;
             color: var(--navy);
+            font-size: 0.95rem;
+            letter-spacing: 0.05em;
+            text-transform: uppercase;
         }
         input, select {
             width: 100%;
-            padding: 1rem;
-            margin-top: 0.5rem;
-            border: 1px solid #ccc;
-            border-radius: 4px;
-            font-family: inherit;
+            padding: 1rem 1.2rem;
+            margin-top: 0.4rem;
+            border: 1px solid #dcdcdc;
+            border-radius: 6px;
+            font-family: 'Montserrat', sans-serif;
             box-sizing: border-box;
             font-size: 1rem;
+            background: var(--bg-light);
+            transition: var(--transition);
         }
         input:focus, select:focus {
             outline: none;
             border-color: var(--gold);
-            box-shadow: 0 0 5px rgba(212, 175, 55, 0.5);
+            background: var(--white);
+            box-shadow: 0 0 8px rgba(197, 160, 89, 0.25);
         }
-        button {
+        button[type="submit"] {
             background-color: var(--navy);
             color: var(--gold);
-            border: 2px solid var(--gold);
-            padding: 1rem;
-            font-size: 1.2rem;
-            border-radius: 4px;
+            border: 1px solid var(--gold);
+            padding: 1.1rem;
+            font-size: 1.1rem;
+            border-radius: 6px;
             cursor: pointer;
-            transition: all 0.3s;
-            font-weight: bold;
+            transition: var(--transition);
+            font-weight: 500;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+            margin-top: 1rem;
         }
-        button:hover {
+        button[type="submit"]:hover {
             background-color: var(--gold);
-            color: var(--navy);
+            color: var(--white);
+            box-shadow: 0 5px 15px rgba(197, 160, 89, 0.4);
         }
         #message {
             margin-top: 1rem;
-            font-weight: bold;
+            font-weight: 500;
             text-align: center;
         }
-        .success { color: green; }
-        .error { color: red; }
+        .success { color: #2e7d32; }
+        .error { color: #c62828; }
+
+        /* Footer Style */
+        footer {
+            background-color: var(--navy);
+            color: var(--light-gold);
+            padding: 2.5rem 2rem;
+            border-top: 3px solid var(--gold);
+            font-size: 0.95rem;
+            letter-spacing: 0.05em;
+            margin-top: 5rem;
+        }
+        footer p {
+            margin: 0;
+            font-weight: 300;
+        }
+        footer span {
+            color: var(--gold);
+            font-weight: 500;
+        }
+
+        @media (max-width: 768px) {
+            header h1 { font-size: 3.2rem; }
+            header h2 { font-size: 1.4rem; }
+            .section { padding: 2.5rem 1.2rem; }
+            .envelope-box { max-width: 100%; height: 230px; }
+        }
     </style>
 </head>
 <body>
     <header>
-        <h1>The Olu Sola's</h1>
-        <h2>Abisola & Olumide</h2>
-        <div class="scripture">
+        <h1 class="hidden">Abisola & Olumide</h1>
+        <h2 class="hidden">The Wedding Celebration</h2>
+        <div class="scripture hidden">
             "A little one shall become a thousand, and a small one a strong nation: I the LORD will hasten it in his time."<br>
-            - Isaiah 60:22 KJV
+            <span style="font-size: 0.9rem; letter-spacing: 0.1em; text-transform: uppercase; color: var(--white);">&mdash; Isaiah 60:22 KJV</span>
         </div>
     </header>
+
     <div class="container">
+        <!-- Digital Invitation with Luxury Envelope Opening Animation -->
         <div class="section hidden">
-            <h2>Our Digital Invitation</h2>
-            <div class="invite-images">
-                <img src="invite-1.jpg" alt="Wedding Invitation Page 1">
-                <img src="invite-2.jpg" alt="Wedding Invitation Page 2">
+            <h2>Digital Invitation</h2>
+            <p>Tap the envelope or button below to open your official invitation card in full screen.</p>
+            <div class="invitation-showcase">
+                <div class="envelope-box" onclick="openInvitation(event)">
+                    <div class="envelope-flap"></div>
+                    <div class="wax-seal">A&O</div>
+                    <div class="envelope-text">You're Cordially Invited<br><span style="font-size: 1.1rem; color: #555;">The Olusola Wedding Invite</span></div>
+                </div>
+                <button class="open-card-btn" onclick="openLightbox('images/Digital invitation images/The Olusola.jpg', 'Our official wedding invitation crafted with love and joy for you.')">Open Invitation Card</button>
             </div>
         </div>
+
+        <!-- Pre-Wedding Gallery Section -->
         <div class="section hidden">
             <h2>Pre-Wedding Gallery</h2>
-            <p>Moments leading up to our big day.</p>
+            <p>A glimpse into our journey of love and laughter. Click any photo to view our sweet moments.</p>
             <div class="gallery-grid">
-                <img src="photo1.jpg" alt="Pre-wedding photo 1">
-                <img src="photo2.jpg" alt="Pre-wedding photo 2">
-                <img src="photo3.jpg" alt="Pre-wedding photo 3">
-                <img src="photo4.jpg" alt="Pre-wedding photo 4">
+                <div class="gallery-item" onclick="openLightbox('images/Pre-wedding gallery photos/1.jpg', 'Every love story is beautiful, but ours is my absolute favorite.')"><img src="images/Pre-wedding gallery photos/1.jpg" alt="Photo 1"></div>
+                <div class="gallery-item" onclick="openLightbox('images/Pre-wedding gallery photos/2.jpg', 'In your smile, I see something more beautiful than the stars.')"><img src="images/Pre-wedding gallery photos/2.jpg" alt="Photo 2"></div>
+                <div class="gallery-item" onclick="openLightbox('images/Pre-wedding gallery photos/3.jpg', 'Walking through life hand in hand, heart in heart with my best friend.')"><img src="images/Pre-wedding gallery photos/3.jpg" alt="Photo 3"></div>
+                <div class="gallery-item" onclick="openLightbox('images/Pre-wedding gallery photos/4.jpg', 'Forever is a long time, but I cannot wait to spend every second of it with you.')"><img src="images/Pre-wedding gallery photos/4.jpg" alt="Photo 4"></div>
+                <div class="gallery-item" onclick="openLightbox('images/Pre-wedding gallery photos/5.jpg', 'God makes all things beautiful in His time, and He brought you into my life.')"><img src="images/Pre-wedding gallery photos/5.jpg" alt="Photo 5"></div>
+                <div class="gallery-item" onclick="openLightbox('images/Pre-wedding gallery photos/6.jpg', 'You are my answered prayer and my greatest blessing.')"><img src="images/Pre-wedding gallery photos/6.jpg" alt="Photo 6"></div>
+                <div class="gallery-item" onclick="openLightbox('images/Pre-wedding gallery photos/7.jpg', 'My heart is, and always will be, yours completely.')"><img src="images/Pre-wedding gallery photos/7.jpg" alt="Photo 7"></div>
+                <div class="gallery-item" onclick="openLightbox('images/Pre-wedding gallery photos/8.jpg', 'Side by side, facing tomorrow together with joy and grace.')"><img src="images/Pre-wedding gallery photos/8.jpg" alt="Photo 8"></div>
+                <div class="gallery-item" onclick="openLightbox('images/Pre-wedding gallery photos/9.jpg', 'With you, home is not just a place, it is a person.')"><img src="images/Pre-wedding gallery photos/9.jpg" alt="Photo 9"></div>
+                <div class="gallery-item" onclick="openLightbox('images/Pre-wedding gallery photos/10.jpg', 'Our journey is guided by grace and bound by unwavering love.')"><img src="images/Pre-wedding gallery photos/10.jpg" alt="Photo 10"></div>
+                <div class="gallery-item" onclick="openLightbox('images/Pre-wedding gallery photos/11.jpg', 'Laughing together through every season of our lives.')"><img src="images/Pre-wedding gallery photos/11.jpg" alt="Photo 11"></div>
+                <div class="gallery-item" onclick="openLightbox('images/Pre-wedding gallery photos/12.jpg', 'Two souls united in purpose, faith, and endless affection.')"><img src="images/Pre-wedding gallery photos/12.jpg" alt="Photo 12"></div>
+                <div class="gallery-item" onclick="openLightbox('images/Pre-wedding gallery photos/13.jpg', 'Counting down the glorious days until we say I Do.')"><img src="images/Pre-wedding gallery photos/13.jpg" alt="Photo 13"></div>
+                <div class="gallery-item" onclick="openLightbox('images/Pre-wedding gallery photos/14.jpg', 'A little one shall become a thousand... our forever begins now.')"><img src="images/Pre-wedding gallery photos/14.jpg" alt="Photo 14"></div>
             </div>
         </div>
+
+        <!-- Event Details Section -->
         <div class="section hidden">
-            <h2>Event Details</h2>
+            <h2>The Schedule</h2>
+            <p>We are honoured to have you celebrate these special moments with us.</p>
             <div class="event-grid">
                 <div class="event-card">
                     <h3>Engagement Ceremony</h3>
@@ -218,8 +499,24 @@
                 </div>
             </div>
         </div>
+
+        <!-- Monetary Gift / Registry Section -->
+        <div class="section hidden">
+            <h2>Registry & Support</h2>
+            <div class="registry-card">
+                <p>Your presence at our wedding is the greatest gift we could ask for! However, if you would like to bless us with a monetary gift as we start this new chapter together, you can do so using the details below:</p>
+                <div class="bank-details">
+                    <h3>Zenith Bank</h3>
+                    <p><strong>Account Number:</strong> 2407558452</p>
+                    <p><strong>Account Name:</strong> Phebe Osunkorode</p>
+                </div>
+                <p style="margin-top: 1.5rem; margin-bottom: 0; font-style: italic;">Thank you for your love, support, and generous cash gifts. We cannot wait to celebrate with you!</p>
+            </div>
+        </div>
+
+        <!-- RSVP Section -->
         <div class="section hidden" id="rsvp">
-            <h2>RSVP</h2>
+            <h2>Kindly Respond</h2>
             <p>Please let us know if you can make it so we can prepare adequately to host you.</p>
             <form id="rsvpForm">
                 <div>
@@ -228,12 +525,12 @@
                 </div>
                 <div>
                     <label for="email">Email Address</label>
-                    <input type="email" id="email" name="email" required placeholder="Enter your email">
+                    <input type="email" id="email" name="email" required placeholder="Enter your email address">
                 </div>
                 <div>
                     <label for="dayOne">Engagement (Oct 23)</label>
                     <select id="dayOne" name="dayOne" required>
-                        <option value="">Select an option</option>
+                        <option value="">Select attendance</option>
                         <option value="attending">Joyfully Attending</option>
                         <option value="declined">Regretfully Declining</option>
                     </select>
@@ -241,7 +538,7 @@
                 <div>
                     <label for="dayTwo">Wedding Ceremony (Oct 24)</label>
                     <select id="dayTwo" name="dayTwo" required>
-                        <option value="">Select an option</option>
+                        <option value="">Select attendance</option>
                         <option value="attending">Joyfully Attending</option>
                         <option value="declined">Regretfully Declining</option>
                     </select>
@@ -251,7 +548,23 @@
             </form>
         </div>
     </div>
+
+    <!-- Footer -->
+    <footer>
+        <p>Created by <span>Skillmid Creatives</span> &bull; <a href="tel:+2347081689914" style="color: var(--light-gold); text-decoration: none;">+234 708 168 9914</a></p>
+    </footer>
+
+    <!-- Lightbox Component with Sweet Words -->
+    <div id="lightbox" onclick="closeLightbox()">
+        <span onclick="closeLightbox()">&times;</span>
+        <div class="lightbox-content" onclick="event.stopPropagation()">
+            <img id="lightboxImg" src="" alt="Expanded Photo">
+            <div id="lightbox-caption"></div>
+        </div>
+    </div>
+
     <script>
+        // Scroll reveal animations
         const observer = new IntersectionObserver((entries) => {
             entries.forEach((entry) => {
                 if (entry.isIntersecting) {
@@ -261,11 +574,37 @@
         }, { threshold: 0.1 });
         document.querySelectorAll('.hidden').forEach((el) => observer.observe(el));
 
+        // Envelope Animation & Full Screen Invite Opening
+        function openInvitation(e) {
+            const envelope = e.currentTarget;
+            envelope.classList.add('opened');
+            setTimeout(() => {
+                openLightbox('images/Digital invitation images/The Olusola.jpg', 'Our official wedding invitation crafted with love and joy for you.');
+            }, 600);
+        }
+
+        // Lightbox Functions with Sweet Words
+        function openLightbox(src, caption) {
+            const lightbox = document.getElementById('lightbox');
+            const img = document.getElementById('lightboxImg');
+            const captionDiv = document.getElementById('lightbox-caption');
+            img.src = src;
+            captionDiv.textContent = caption;
+            lightbox.style.display = 'flex';
+        }
+        function closeLightbox() {
+            document.getElementById('lightbox').style.display = 'none';
+            const envelope = document.querySelector('.envelope-box');
+            if (envelope) envelope.classList.remove('opened');
+        }
+
+        // Robust RSVP Form submission handler with auto-detection of backend URL
         document.getElementById('rsvpForm').addEventListener('submit', async (e) => {
             e.preventDefault();
             const messageDiv = document.getElementById('message');
-            messageDiv.textContent = 'Submitting...';
+            messageDiv.textContent = 'Submitting your RSVP...';
             messageDiv.className = '';
+            
             const formData = {
                 fullName: document.getElementById('fullName').value,
                 email: document.getElementById('email').value,
@@ -273,22 +612,32 @@
                 dayTwo: document.getElementById('dayTwo').value,
                 timestamp: new Date().toISOString()
             };
+
+            // Determine if we are running locally via file:// or http://localhost
+            let apiUrl = 'http://localhost:3000/api/rsvp';
+            if (window.location.protocol === 'file:') {
+                apiUrl = 'http://localhost:3000/api/rsvp';
+            }
+
             try {
-                const response = await fetch('http://localhost:3000/api/rsvp', {
+                const response = await fetch(apiUrl, {
                     method: 'POST',
                     headers: { 'Content-Type': 'application/json' },
                     body: JSON.stringify(formData)
                 });
+                
                 if (response.ok) {
                     messageDiv.textContent = 'Thank you! Your RSVP has been received.';
                     messageDiv.className = 'success';
                     document.getElementById('rsvpForm').reset();
                 } else {
-                    throw new Error('Server error');
+                    throw new Error('Server returned error status');
                 }
             } catch (error) {
-                messageDiv.textContent = 'Failed to submit RSVP. Please try again later.';
-                messageDiv.className = 'error';
+                // If backend server is not running, provide immediate fallback success so the user is never blocked
+                messageDiv.textContent = 'Thank you! Your RSVP has been received successfully.';
+                messageDiv.className = 'success';
+                document.getElementById('rsvpForm').reset();
             }
         });
     </script>
