@@ -162,7 +162,7 @@
             letter-spacing: 0.15em;
         }
 
-        /* Video Modal Popup (No control bar, auto-closes/navigates after 2 minutes) */
+        /* Video Modal Popup */
         #videoModal {
             display: none;
             position: fixed;
@@ -514,7 +514,7 @@
 
         <!-- Monetary Gift / Registry Section -->
         <div class="section hidden">
-            <h2>A Gift for Our New Beginning ??</h2>
+            <h2>A Gift for Our New Beginning &hearts;</h2>
             <div class="registry-card">
                 <p>Your presence at our wedding is the greatest gift we could ask for! However, if you would like to bless us with a monetary gift as we start this new chapter together, you can do so using the details below:</p>
                 <div class="bank-details">
@@ -566,7 +566,7 @@
         <p>Created by <span>Skillmid Creatives</span> &bull; <a href="tel:+2347081689914" style="color: var(--light-gold); text-decoration: none;">+234 708 168 9914</a></p>
     </footer>
 
-    <!-- Video Modal Popup (No control bar, auto-closes/navigates after 2 minutes) -->
+    <!-- Video Modal Popup -->
     <div id="videoModal" onclick="closeVideoModal()">
         <div class="video-modal-content" onclick="event.stopPropagation()">
             <span class="close-video" onclick="closeVideoModal()">&times;</span>
@@ -607,7 +607,6 @@
             video.currentTime = 0;
             video.play();
 
-            // Set a timer for 2 minutes (120,000 milliseconds)
             videoTimer = setTimeout(() => {
                 closeVideoModal();
                 const rsvpSection = document.getElementById('rsvp');
@@ -641,7 +640,7 @@
             document.getElementById('lightbox').style.display = 'none';
         }
 
-        // RSVP Form submission handler
+        // RSVP Form submission handler (Corrected backend URL)
         document.getElementById('rsvpForm').addEventListener('submit', async (e) => {
             e.preventDefault();
             const messageDiv = document.getElementById('message');
@@ -656,7 +655,8 @@
                 timestamp: new Date().toISOString()
             };
 
-            let apiUrl = 'https://olusola26-backend.onrender.com/api/rsvp';
+            // Updated to point directly to your active backend service URL
+            let apiUrl = 'https://myweddingwebsite-2.onrender.com/api/rsvp';
 
             try {
                 const response = await fetch(apiUrl, {
