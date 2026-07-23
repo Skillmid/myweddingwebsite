@@ -162,7 +162,7 @@
             letter-spacing: 0.15em;
         }
 
-        /* Video Modal Popup (No controls, clean view) */
+        /* Video Modal Popup (No control bar, auto-closes/navigates after 2 minutes) */
         #videoModal {
             display: none;
             position: fixed;
@@ -514,7 +514,7 @@
 
         <!-- Monetary Gift / Registry Section -->
         <div class="section hidden">
-            <h2>A Gift for Our New Beginning</h2>
+            <h2>A Gift for Our New Beginning ??</h2>
             <div class="registry-card">
                 <p>Your presence at our wedding is the greatest gift we could ask for! However, if you would like to bless us with a monetary gift as we start this new chapter together, you can do so using the details below:</p>
                 <div class="bank-details">
@@ -656,7 +656,7 @@
                 timestamp: new Date().toISOString()
             };
 
-            let apiUrl = 'http://localhost:3000/api/rsvp';
+            let apiUrl = 'https://olusola26-backend.onrender.com/api/rsvp';
 
             try {
                 const response = await fetch(apiUrl, {
