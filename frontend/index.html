@@ -240,6 +240,13 @@
             line-height: 1.6;
             margin: 0.8rem 0;
         }
+        .map-container {
+            margin-top: 1.2rem;
+            border-radius: 8px;
+            overflow: hidden;
+            border: 1px solid #dcdcdc;
+            box-shadow: 0 2px 6px rgba(0,0,0,0.03);
+        }
         .gallery-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
@@ -490,7 +497,7 @@
             </div>
         </div>
 
-        <!-- Event Details Section -->
+        <!-- Event Details Section with Google Maps -->
         <div class="section hidden">
             <h2>The Schedule</h2>
             <p>We are honoured to have you celebrate these special moments with us.</p>
@@ -501,6 +508,9 @@
                     <p><strong>Time:</strong> 3:00 PM</p>
                     <p><strong>Venue:</strong> Redeemers School of Mission (RECSOM), Ededimeji, Ede, Osun State</p>
                     <p><strong>Color Code:</strong> White</p>
+                    <div class="map-container">
+                        <iframe width="100%" height="200" style="border:0;" loading="lazy" allowfullscreen src="https://maps.google.com/maps?q=Redeemers+School+of+Mission+Ededimeji+Ede+Osun+State&t=&z=15&ie=UTF8&iwloc=&output=embed"></iframe>
+                    </div>
                 </div>
                 <div class="event-card">
                     <h3>Wedding & Reception</h3>
@@ -508,6 +518,9 @@
                     <p><strong>Time:</strong> 9:00 AM</p>
                     <p><strong>Church Venue:</strong> Redeemers School of Mission (RECSOM), Ededimeji, Ede, Osun State</p>
                     <p><strong>Reception Venue:</strong> Ede Mega High School, Cottage junction, Ede, Osun State</p>
+                    <div class="map-container">
+                        <iframe width="100%" height="200" style="border:0;" loading="lazy" allowfullscreen src="https://maps.google.com/maps?q=Ede+Mega+High+School+Cottage+junction+Ede+Osun+State&t=&z=15&ie=UTF8&iwloc=&output=embed"></iframe>
+                    </div>
                 </div>
             </div>
         </div>
@@ -566,11 +579,11 @@
         <p>Created by <span>Skillmid Creatives</span> &bull; <a href="tel:+2347081689914" style="color: var(--light-gold); text-decoration: none;">+234 708 168 9914</a></p>
     </footer>
 
-    <!-- Video Modal Popup -->
+    <!-- Video Modal Popup with preloading optimization -->
     <div id="videoModal" onclick="closeVideoModal()">
         <div class="video-modal-content" onclick="event.stopPropagation()">
             <span class="close-video" onclick="closeVideoModal()">&times;</span>
-            <video id="inviteVideo">
+            <video id="inviteVideo" preload="auto" playsinline>
                 <source src="images/Digital invitation images/The Olusola.mp4" type="video/mp4">
                 Your browser does not support the video tag.
             </video>
@@ -640,7 +653,7 @@
             document.getElementById('lightbox').style.display = 'none';
         }
 
-        // RSVP Form submission handler (Corrected backend URL)
+        // RSVP Form submission handler
         document.getElementById('rsvpForm').addEventListener('submit', async (e) => {
             e.preventDefault();
             const messageDiv = document.getElementById('message');
@@ -655,7 +668,6 @@
                 timestamp: new Date().toISOString()
             };
 
-            // Updated to point directly to your active backend service URL
             let apiUrl = 'https://myweddingwebsite-2.onrender.com/api/rsvp';
 
             try {
