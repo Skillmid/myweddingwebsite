@@ -1,19 +1,20 @@
 const express = require("express");
 const cors = require("cors");
 const { MongoClient } = require("mongodb");
-require("dotenv").config();
+require("dotenv").config({ override: true });
 
 const app = express();
-const PORT = process.env.PORT || 3000;
+const PORT = process.env.PORT || 10000;
 
 app.use(cors());
 app.use(express.json());
 
-const uri = process.env.MONGODB_URI;
+// Check for either MONGODB_URI or MONGO_URI from Render dashboard
+const uri = process.env.MONGODB_URI || process.env.MONGO_URI;
 let db;
 
 if (!uri) {
-    console.error("Please define the MONGODB_URI environment variable inside .env");
+    console.error("Please define the MONGODB_URI or MONGO_URI environment variable in your Render dashboard.");
 } else {
     const client = new MongoClient(uri);
     client.connect()
