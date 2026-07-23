@@ -99,7 +99,7 @@
             margin-bottom: 2rem;
         }
 
-        /* Luxury Interactive Envelope & Card Display */
+        /* Digital Invitation Interactive Envelope */
         .invitation-showcase {
             display: flex;
             flex-direction: column;
@@ -107,93 +107,105 @@
             gap: 2rem;
             margin: 2rem auto;
         }
-        .envelope-box {
+        .envelope-container {
             position: relative;
             width: 100%;
-            max-width: 420px;
-            height: 270px;
-            background: linear-gradient(135deg, #f5efe6 0%, #e6dfd5 100%);
-            border-radius: 10px;
-            box-shadow: 0 20px 40px rgba(0,0,0,0.12);
-            border: 2px solid var(--gold);
-            cursor: pointer;
-            overflow: hidden;
-            transition: transform 0.4s ease, box-shadow 0.4s ease;
+            max-width: 450px;
+            height: 300px;
+            background: var(--navy);
+            border-radius: 12px;
             display: flex;
             justify-content: center;
             align-items: center;
+            cursor: pointer;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.15);
+            border: 2px solid var(--gold);
+            overflow: hidden;
+            transition: var(--transition);
         }
-        .envelope-box:hover {
+        .envelope-container:hover {
             transform: translateY(-5px);
-            box-shadow: 0 25px 50px rgba(197, 160, 89, 0.25);
+            box-shadow: 0 25px 50px rgba(0,0,0,0.2);
         }
-        .envelope-flap {
-            position: absolute;
+        .envelope-content {
+            text-align: center;
+            color: var(--white);
+            padding: 2rem;
+            z-index: 2;
+        }
+        .wax-seal {
+            width: 70px;
+            height: 70px;
+            background: var(--gold);
+            border-radius: 50%;
+            margin: 0 auto 1.2rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.8rem;
+            font-weight: bold;
+            color: var(--navy);
+            box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+            border: 2px solid var(--white);
+        }
+        .envelope-content h3 {
+            margin: 0 0 0.5rem 0;
+            font-size: 1.8rem;
+            color: var(--light-gold);
+        }
+        .envelope-content p {
+            margin: 0;
+            color: rgba(255,255,255,0.8);
+            font-size: 0.95rem;
+            text-transform: uppercase;
+            letter-spacing: 0.15em;
+        }
+
+        /* Video Modal Popup (No controls, clean view) */
+        #videoModal {
+            display: none;
+            position: fixed;
+            z-index: 1000;
             top: 0;
             left: 0;
             width: 100%;
-            height: 135px;
-            background: linear-gradient(180deg, #dfd6c8 0%, #d0c5b4 100%);
-            clip-path: polygon(0 0, 50% 100%, 100% 0);
-            transform-origin: top;
-            transition: transform 0.8s cubic-bezier(0.4, 0, 0.2, 1);
-            z-index: 3;
-            border-bottom: 1px solid rgba(197, 160, 89, 0.5);
-        }
-        .envelope-box.opened .envelope-flap {
-            transform: rotateX(180deg);
-            z-index: 1;
-        }
-        .wax-seal {
-            position: absolute;
-            top: 105px;
-            width: 65px;
-            height: 65px;
-            background: radial-gradient(circle, #d4af37 0%, #b38f27 100%);
-            border-radius: 50%;
-            display: flex;
+            height: 100%;
+            background: rgba(15, 23, 42, 0.95);
             justify-content: center;
             align-items: center;
+            flex-direction: column;
+            padding: 2rem;
+            box-sizing: border-box;
+        }
+        .video-modal-content {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            max-width: 800px;
+            width: 100%;
+            position: relative;
+        }
+        #videoModal video {
+            width: 100%;
+            max-height: 75vh;
+            border-radius: 8px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+            border: 2px solid var(--gold);
+            background: #000;
+        }
+        .close-video {
+            position: absolute;
+            top: -50px;
+            right: 0;
             color: var(--white);
-            font-family: 'Cormorant Garamond', serif;
-            font-size: 1.4rem;
-            font-weight: bold;
-            box-shadow: 0 4px 12px rgba(0,0,0,0.3);
-            z-index: 4;
-            border: 2px solid #fff;
-            transition: transform 0.5s ease, opacity 0.5s ease;
-        }
-        .envelope-box.opened .wax-seal {
-            transform: scale(0);
-            opacity: 0;
-        }
-        .envelope-text {
-            font-family: 'Cormorant Garamond', serif;
-            font-size: 1.6rem;
-            color: var(--navy);
-            font-style: italic;
-            z-index: 2;
-            padding: 0 1rem;
-        }
-        .open-card-btn {
-            background-color: var(--navy);
-            color: var(--gold);
-            border: 1px solid var(--gold);
-            padding: 1rem 2.5rem;
-            font-size: 1.1rem;
-            border-radius: 6px;
+            font-size: 3rem;
             cursor: pointer;
+            font-family: 'Cormorant Garamond', serif;
             transition: var(--transition);
-            font-weight: 500;
-            letter-spacing: 0.1em;
-            text-transform: uppercase;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
         }
-        .open-card-btn:hover {
-            background-color: var(--gold);
-            color: var(--white);
-            box-shadow: 0 8px 20px rgba(197, 160, 89, 0.4);
-            transform: translateY(-2px);
+        .close-video:hover {
+            color: var(--gold);
         }
 
         .event-grid {
@@ -427,7 +439,6 @@
             header h1 { font-size: 3.2rem; }
             header h2 { font-size: 1.4rem; }
             .section { padding: 2.5rem 1.2rem; }
-            .envelope-box { max-width: 100%; height: 230px; }
         }
     </style>
 </head>
@@ -442,17 +453,18 @@
     </header>
 
     <div class="container">
-        <!-- Digital Invitation with Luxury Envelope Opening Animation -->
+        <!-- Digital Invitation Interactive Envelope Section -->
         <div class="section hidden">
             <h2>Digital Invitation</h2>
-            <p>Tap the envelope or button below to open your official invitation card in full screen.</p>
+            <p>Tap the envelope below to open your invitation.</p>
             <div class="invitation-showcase">
-                <div class="envelope-box" onclick="openInvitation(event)">
-                    <div class="envelope-flap"></div>
-                    <div class="wax-seal">A&O</div>
-                    <div class="envelope-text">You're Cordially Invited<br><span style="font-size: 1.1rem; color: #555;">The Olusola Wedding Invite</span></div>
+                <div class="envelope-container" onclick="openVideoModal()">
+                    <div class="envelope-content">
+                        <div class="wax-seal">AO</div>
+                        <h3>The Olusola Wedding</h3>
+                        <p>Open Invitation</p>
+                    </div>
                 </div>
-                <button class="open-card-btn" onclick="openLightbox('images/Digital invitation images/The Olusola.jpg', 'Our official wedding invitation crafted with love and joy for you.')">Open Invitation Card</button>
             </div>
         </div>
 
@@ -502,7 +514,7 @@
 
         <!-- Monetary Gift / Registry Section -->
         <div class="section hidden">
-            <h2>Registry & Support</h2>
+            <h2>A Gift for Our New Beginning</h2>
             <div class="registry-card">
                 <p>Your presence at our wedding is the greatest gift we could ask for! However, if you would like to bless us with a monetary gift as we start this new chapter together, you can do so using the details below:</p>
                 <div class="bank-details">
@@ -554,7 +566,18 @@
         <p>Created by <span>Skillmid Creatives</span> &bull; <a href="tel:+2347081689914" style="color: var(--light-gold); text-decoration: none;">+234 708 168 9914</a></p>
     </footer>
 
-    <!-- Lightbox Component with Sweet Words -->
+    <!-- Video Modal Popup (No control bar, auto-closes/navigates after 2 minutes) -->
+    <div id="videoModal" onclick="closeVideoModal()">
+        <div class="video-modal-content" onclick="event.stopPropagation()">
+            <span class="close-video" onclick="closeVideoModal()">&times;</span>
+            <video id="inviteVideo">
+                <source src="images/Digital invitation images/The Olusola.mp4" type="video/mp4">
+                Your browser does not support the video tag.
+            </video>
+        </div>
+    </div>
+
+    <!-- Lightbox Component for Gallery -->
     <div id="lightbox" onclick="closeLightbox()">
         <span onclick="closeLightbox()">&times;</span>
         <div class="lightbox-content" onclick="event.stopPropagation()">
@@ -574,13 +597,35 @@
         }, { threshold: 0.1 });
         document.querySelectorAll('.hidden').forEach((el) => observer.observe(el));
 
-        // Envelope Animation & Full Screen Invite Opening
-        function openInvitation(e) {
-            const envelope = e.currentTarget;
-            envelope.classList.add('opened');
-            setTimeout(() => {
-                openLightbox('images/Digital invitation images/The Olusola.jpg', 'Our official wedding invitation crafted with love and joy for you.');
-            }, 600);
+        let videoTimer = null;
+
+        // Video Modal Functions
+        function openVideoModal() {
+            const modal = document.getElementById('videoModal');
+            const video = document.getElementById('inviteVideo');
+            modal.style.display = 'flex';
+            video.currentTime = 0;
+            video.play();
+
+            // Set a timer for 2 minutes (120,000 milliseconds)
+            videoTimer = setTimeout(() => {
+                closeVideoModal();
+                const rsvpSection = document.getElementById('rsvp');
+                if (rsvpSection) {
+                    rsvpSection.scrollIntoView({ behavior: 'smooth' });
+                }
+            }, 120000);
+        }
+
+        function closeVideoModal() {
+            const modal = document.getElementById('videoModal');
+            const video = document.getElementById('inviteVideo');
+            video.pause();
+            modal.style.display = 'none';
+            if (videoTimer) {
+                clearTimeout(videoTimer);
+                videoTimer = null;
+            }
         }
 
         // Lightbox Functions with Sweet Words
@@ -594,11 +639,9 @@
         }
         function closeLightbox() {
             document.getElementById('lightbox').style.display = 'none';
-            const envelope = document.querySelector('.envelope-box');
-            if (envelope) envelope.classList.remove('opened');
         }
 
-        // Robust RSVP Form submission handler with auto-detection of backend URL
+        // RSVP Form submission handler
         document.getElementById('rsvpForm').addEventListener('submit', async (e) => {
             e.preventDefault();
             const messageDiv = document.getElementById('message');
@@ -613,11 +656,7 @@
                 timestamp: new Date().toISOString()
             };
 
-            // Determine if we are running locally via file:// or http://localhost
             let apiUrl = 'http://localhost:3000/api/rsvp';
-            if (window.location.protocol === 'file:') {
-                apiUrl = 'http://localhost:3000/api/rsvp';
-            }
 
             try {
                 const response = await fetch(apiUrl, {
@@ -634,7 +673,6 @@
                     throw new Error('Server returned error status');
                 }
             } catch (error) {
-                // If backend server is not running, provide immediate fallback success so the user is never blocked
                 messageDiv.textContent = 'Thank you! Your RSVP has been received successfully.';
                 messageDiv.className = 'success';
                 document.getElementById('rsvpForm').reset();
